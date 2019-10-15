@@ -1,0 +1,37 @@
+CREATE TABLE patients (
+ id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+ first_name VARCHAR(64),
+ last_name VARCHAR(64),
+ blood_type VARCHAR(3),
+ address VARCHAR(1024),
+ dob DATETIME
+);
+
+DESCRIBE patients;
+
+CREATE TABLE diagnosis (
+ id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+ description TEXT,
+ date DATETIME
+);
+
+SHOW TABLES;
+
+ALTER TABLE diagnosis ADD COLUMN patient_id INT UNSIGNED;
+
+//                                                          <table name>(<column name>)
+ALTER TABLE diagnosis ADD FOREIGN KEY (patient_id) REFERENCES patients(id);
+
+INSERT INTO patients (first_name, last_name, blood_type, address, dob) 
+VALUES ("Paul", "Tan", "O", "Canberry Road 31", "1999-06-29");
+
+// View data
+SELECT * FROM patients;
+
+// Insert a diagnosis into the patients
+INSERT INTO diagnosis (description, date, patient_id)
+VALUES ("Upper tract infection, nasal drip", "2019-10-15", 99);
+
+DELETE FROM diagnosis WHERE patient_id = 1;
+
+DELETE FROM patients WHERE id=1;
