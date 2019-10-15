@@ -35,3 +35,6 @@ VALUES ("Upper tract infection, nasal drip", "2019-10-15", 99);
 DELETE FROM diagnosis WHERE patient_id = 1;
 
 DELETE FROM patients WHERE id=1;
+
+/* FOR THE CHINOOK DATABASE */
+INSERT INTO Artist
