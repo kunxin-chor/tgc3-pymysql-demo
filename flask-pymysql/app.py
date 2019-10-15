@@ -30,6 +30,12 @@ def albums():
         
     cursor = connection.cursor(pymysql.cursors.DictCursor)
 
+    sql = "SELECT * FROM Album"
+    
+    # The results will be stored inside the cursor
+    # after we do cursor.execute(sql)
+    cursor.execute(sql)
+
 # "magic code" -- boilerplate
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
