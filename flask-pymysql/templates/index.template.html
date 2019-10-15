@@ -12,7 +12,7 @@
   </head>
   <body>
     <div class='container'>
-        <table class='title'>
+        <table class='table'>
             <thead>
                 <tr>
                     <th>
@@ -26,6 +26,21 @@
                     </th>
                 </tr>
             </thead>
+            <tbody>
+                {%for each_result in results %}
+                <tr>
+                    <td>
+                        {{each_result['FirstName']}} 
+                    </td>
+                    <td>
+                        {{each_result['LastName']}}
+                    </td>
+                    <td>
+                        {{each_result['Title']}}
+                    </td>
+                </tr>
+                {%endfor%}
+            </tbody>
         </table>
     </div>
     <!-- Optional JavaScript -->
