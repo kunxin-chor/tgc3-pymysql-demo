@@ -18,11 +18,13 @@
                     Album Name
                 </th>
             </tr>
+            {%for each_result in results %}
             <tr>
                 <td>
-                    Generic Album Name 
+                    {{each_result['Title']}} 
                 </td>
             </tr>
+            {%endfor%}
         </table>
     </div>
 
