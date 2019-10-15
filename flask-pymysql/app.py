@@ -35,6 +35,9 @@ def albums():
     # The results will be stored inside the cursor
     # after we do cursor.execute(sql)
     cursor.execute(sql)
+    
+    # we are passing the cursor to the template as the placeholder results
+    return render_template('album.template.html', results=cursor)
 
 # "magic code" -- boilerplate
 if __name__ == '__main__':
