@@ -19,6 +19,10 @@ def home():
     cursor.execute(sql)
     return render_template("index.template.html", results=cursor)
 
+@app.route("/albums")
+def albums():
+    return "Albums route work"
+
 # "magic code" -- boilerplate
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
