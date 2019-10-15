@@ -21,7 +21,14 @@ def home():
 
 @app.route("/albums")
 def albums():
-    return "Albums route work"
+    connection = pymysql.connect(
+        host='localhost',
+        user='admin',
+        password='password',
+        database='chinook'
+        )
+        
+    cursor = connection.cursor(pymysql.cursors.DictCursor)
 
 # "magic code" -- boilerplate
 if __name__ == '__main__':
