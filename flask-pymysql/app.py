@@ -67,7 +67,9 @@ def search():
     
 @app.route('/search', methods=['POST'])
 def process_search():
-    return "Form recieved"
+    # try to retrieve out what the person has entered into the field
+    terms = request.form["search-terms"]
+    return terms
 
 # "magic code" -- boilerplate
 if __name__ == '__main__':
