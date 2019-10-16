@@ -80,7 +80,7 @@ def process_search():
         
     cursor = connection.cursor(pymysql.cursors.DictCursor)
     
-    sql = "SELECT * FROM Album WHERE Title LIKE '{}'".format(terms)
+    sql = "SELECT * FROM Album WHERE Title LIKE '%{}%'".format(terms)
     cursor.execute(sql)
     
     # MAKE SURE TO COMMENT OUT THE TEST CODE
