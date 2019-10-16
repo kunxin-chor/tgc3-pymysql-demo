@@ -117,7 +117,9 @@ def process_add_album():
      VALUES ({}, "{}", {})
     """.format(next_id, album, artist)
     
-    return sql
+    cursor.execute(sql)
+    
+    return "done"
     
     
 # "magic code" -- boilerplate
