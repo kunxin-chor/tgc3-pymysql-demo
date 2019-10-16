@@ -108,7 +108,9 @@ def process_add_album():
     cursor.execute(sql)
     
     max_id = cursor.fetchone()[0]
-    return max_id
+    next_id = max_id + 1
+    
+    
     
     
     # sql = """
