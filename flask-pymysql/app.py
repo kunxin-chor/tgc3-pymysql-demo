@@ -4,14 +4,19 @@ import os
 
 app = Flask(__name__)
 
-@app.route('/')
-def home():
+def get_connection():
     connection = pymysql.connect(
         host='localhost',
         user='admin',
         password='password',
         database='chinook'
         )
+    return connection
+
+
+@app.route('/')
+def home():
+    connection = get_connection()
         
     cursor = connection.cursor(pymysql.cursors.DictCursor)
     
@@ -21,12 +26,7 @@ def home():
 
 @app.route("/albums")
 def albums():
-    connection = pymysql.connect(
-        host='localhost',
-        user='admin',
-        password='password',
-        database='chinook'
-        )
+    connection = get_connection()
         
     cursor = connection.cursor(pymysql.cursors.DictCursor)
 
@@ -43,12 +43,7 @@ def albums():
 @app.route('/combined')
 def combined_table():
     # step 1 : Create the connection
-    connection = pymysql.connect(
-        host='localhost',
-        user='admin',
-        password='password',
-        database='chinook'
-        )
+    connection = get_connection()
         
     employeeCursor = connection.cursor(pymysql.cursors.DictCursor)
     sql = "SELECT * FROM Employee"
@@ -71,12 +66,7 @@ def process_search():
     terms = request.form["search-terms"]
     
     # create connection
-    connection = pymysql.connect(
-        host='localhost',
-        user='admin',
-        password='password',
-        database='chinook'
-        )
+    connection = get_connection()
         
     cursor = connection.cursor(pymysql.cursors.DictCursor)
     
