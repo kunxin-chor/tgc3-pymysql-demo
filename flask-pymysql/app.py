@@ -101,7 +101,19 @@ def process_add_album():
     artist = request.form['artist']
     album = request.form['album']
     
+    connection = get_connection();
+    cursor = connection.cursor()
     
+    sql = "SELECT MAX(AlbumId) FROM Album"
+    cursor.execute(sql)
+    
+    max_id = cursor.fetchone()[0]
+    return max_id
+    
+    
+    # sql = """
+    #  INSERT INTO Album (Al)
+    # """
     
     
 # "magic code" -- boilerplate
