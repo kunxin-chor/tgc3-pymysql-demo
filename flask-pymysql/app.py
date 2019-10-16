@@ -69,7 +69,11 @@ def search():
 def process_search():
     # try to retrieve out what the person has entered into the field
     terms = request.form["search-terms"]
-    return terms
+
+    
+    sql = "SELECT * FROM Album WHERE Title LIKE '{}'".format(terms)
+    return sql
+    
 
 # "magic code" -- boilerplate
 if __name__ == '__main__':
