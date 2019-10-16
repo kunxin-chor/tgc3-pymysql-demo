@@ -88,7 +88,10 @@ def process_search():
     
 @app.route('/new-album')
 def show_new_album_form():
-    return "show new album form"
+
+    
+    artists = ["Aerosmith", "AC/DC 2", "Sally Ye"]
+    return render_template("add_new_album.template.html", artists=artists)
     
 # "magic code" -- boilerplate
 if __name__ == '__main__':
