@@ -125,10 +125,18 @@ def process_add_album():
     return "done"
     
 # a route with one route parameter named "album_id"
-@app.route('/edit_album/<album_id>')
+#            edit-album/999 
+@app.route('/edit-album/<album_id>')
 def show_edit_album_form(album_id):
-    return album_id
+    connection = get_connection()
+    cursor = connection.cursor(pymysql.cursors.DictCursor)
     
+    sql = "SELECT * FROM Album WHERE AlbumId = {}".format(album_id)
+    cursor.execute(sql)
+    
+    album = cursor.fetchone()
+    
+    return album
     
 # "magic code" -- boilerplate
 if __name__ == '__main__':
