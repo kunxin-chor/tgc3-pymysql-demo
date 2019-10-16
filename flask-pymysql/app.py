@@ -124,6 +124,11 @@ def process_add_album():
     
     return "done"
     
+# a route with one route parameter named "album_id"
+@app.route('/edit_album/<album_id>')
+def show_edit_album_form(album_id):
+    return album_id
+    
     
 # "magic code" -- boilerplate
 if __name__ == '__main__':
