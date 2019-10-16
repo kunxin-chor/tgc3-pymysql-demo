@@ -63,26 +63,27 @@ def search():
 @app.route('/search', methods=['POST'])
 def process_search():
     # try to retrieve out what the person has entered into the field
-    terms = request.form["search-terms"]
+    print(request.form)
+    return "done"
     
     # create connection
-    connection = get_connection()
+    # connection = get_connection()
         
-    cursor = connection.cursor(pymysql.cursors.DictCursor)
+    # cursor = connection.cursor(pymysql.cursors.DictCursor)
     
-    sql = """
-        SELECT * FROM Album 
-        INNER JOIN Artist ON Album.ArtistId = Artist.ArtistId
-        WHERE Title LIKE '%{}%' OR Artist.Name LIKE '%{}%'
+    # sql = """
+    #     SELECT * FROM Album 
+    #     INNER JOIN Artist ON Album.ArtistId = Artist.ArtistId
+    #     WHERE Title LIKE '%{}%' OR Artist.Name LIKE '%{}%'
         
-    """.format(terms, terms)
-    print(sql)
-    cursor.execute(sql)
+    # """.format(terms, terms)
+    # print(sql)
+    # cursor.execute(sql)
     
-    # MAKE SURE TO COMMENT OUT THE TEST CODE
-    # for each_result in cursor:
-    #     print(each_result)
-    return render_template("search_results.template.html", results=cursor)
+    # # MAKE SURE TO COMMENT OUT THE TEST CODE
+    # # for each_result in cursor:
+    # #     print(each_result)
+    # return render_template("search_results.template.html", results=cursor)
     
     
 
