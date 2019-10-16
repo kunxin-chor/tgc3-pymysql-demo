@@ -131,12 +131,20 @@ def show_edit_album_form(album_id):
     connection = get_connection()
     cursor = connection.cursor(pymysql.cursors.DictCursor)
     
+    #select all the artists
+    artistCursor = connection.cursor(pymysql.cursors.DictCursor)
+    sql = "SELECT * FROM Artist"
+    artistCursor.execute(sql)
+    
+    
     sql = "SELECT * FROM Album WHERE AlbumId = {}".format(album_id)
     cursor.execute(sql)
     
     album = cursor.fetchone()
     
-    return render_template('edit_album_form.template.html', album=album)
+    return render_template('edit_album_form.template.html', album=album, artistCursor=artistCursor)
+
+
     
 # "magic code" -- boilerplate
 if __name__ == '__main__':
