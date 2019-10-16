@@ -63,7 +63,11 @@ def combined_table():
 
 @app.route('/search')
 def search():
-    return "Search"
+    return render_template("search.template.html")
+    
+@app.route('/search', methods=['POST'])
+def process_search():
+    return "Form recieved"
 
 # "magic code" -- boilerplate
 if __name__ == '__main__':
