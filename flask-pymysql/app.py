@@ -96,6 +96,10 @@ def show_new_album_form():
     
     return render_template("add_new_album.template.html", artists=cursor)
     
+@app.route('/new-album', methods=['POST'])
+def process_add_album():
+    print(request.form)
+    
 # "magic code" -- boilerplate
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
