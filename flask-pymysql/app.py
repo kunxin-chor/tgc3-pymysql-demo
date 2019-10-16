@@ -83,9 +83,10 @@ def process_search():
     sql = "SELECT * FROM Album WHERE Title LIKE '{}'".format(terms)
     cursor.execute(sql)
     
-    for each_result in cursor:
-        print(each_result)
-    return "done"
+    # MAKE SURE TO COMMENT OUT THE TEST CODE
+    # for each_result in cursor:
+    #     print(each_result)
+    return render_template("search_results.template.html")
     
     
 
