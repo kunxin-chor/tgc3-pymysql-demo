@@ -110,12 +110,14 @@ def process_add_album():
     max_id = cursor.fetchone()[0]
     next_id = max_id + 1
     
+    # Inserting the new album
+
+    sql = """
+     INSERT INTO Album (AlbumId, Title, ArtistId)
+     VALUES ({}, "{}", {})
+    """.format(next_id, album, artist)
     
-    
-    
-    # sql = """
-    #  INSERT INTO Album (Al)
-    # """
+    return sql
     
     
 # "magic code" -- boilerplate
