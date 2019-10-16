@@ -12,10 +12,8 @@
   </head>
   <body>
     <div class='container'>
-        <div>
-            <a href="search">Search</a>
-        </div>
-        <table class='table'>
+        <h3>Employees</h3>
+            <table class='table'>
             <thead>
                 <tr>
                     <th>
@@ -30,7 +28,7 @@
                 </tr>
             </thead>
             <tbody>
-                {%for each_result in results %}
+                {%for each_result in employeeResults %}
                 <tr>
                     <td>
                         {{each_result['FirstName']}} 
@@ -45,6 +43,22 @@
                 {%endfor%}
             </tbody>
         </table>
+        <h3>Albums</h3>
+        <table class='table'>
+            <tr>
+                <th>
+                    Album Name
+                </th>
+            </tr>
+            {%for each_result in albumResults %}
+            <tr>
+                <td>
+                    {{each_result['Title']}} 
+                </td>
+            </tr>
+            {%endfor%}
+        </table>
+        
     </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

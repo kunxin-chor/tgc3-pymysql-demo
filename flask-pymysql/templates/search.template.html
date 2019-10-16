@@ -12,39 +12,11 @@
   </head>
   <body>
     <div class='container'>
-        <div>
-            <a href="search">Search</a>
-        </div>
-        <table class='table'>
-            <thead>
-                <tr>
-                    <th>
-                        First Name
-                    </th>
-                    <th>
-                        Last Name
-                    </th>
-                    <th>
-                        Title
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                {%for each_result in results %}
-                <tr>
-                    <td>
-                        {{each_result['FirstName']}} 
-                    </td>
-                    <td>
-                        {{each_result['LastName']}}
-                    </td>
-                    <td>
-                        {{each_result['Title']}}
-                    </td>
-                </tr>
-                {%endfor%}
-            </tbody>
-        </table>
+        <form method='POST'>
+            <input type='text' name='search-terms'/>
+            <input type='submit' value='Search'/>
+        </form>
+        
     </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

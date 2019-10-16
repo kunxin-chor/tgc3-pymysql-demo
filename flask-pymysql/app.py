@@ -39,6 +39,32 @@ def albums():
     # we are passing the cursor to the template as the placeholder results
     return render_template('album.template.html', results=cursor)
 
+
+@app.route('/combined')
+def combined_table():
+    # step 1 : Create the connection
+    connection = pymysql.connect(
+        host='localhost',
+        user='admin',
+        password='password',
+        database='chinook'
+        )
+        
+    employeeCursor = connection.cursor(pymysql.cursors.DictCursor)
+    sql = "SELECT * FROM Employee"
+    employeeCursor.execute(sql)
+    
+    albumCursor = connection.cursor(pymysql.cursors.DictCursor)
+    sql = "SELECT * FROM Album"
+    albumCursor.execute(sql)
+    
+    return render_template("combined_table.template.html",
+    employeeResults = employeeCursor, albumResults = albumCursor)
+
+@app.route('/search')
+def search():
+    return "Search"
+
 # "magic code" -- boilerplate
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
