@@ -98,7 +98,11 @@ def show_new_album_form():
     
 @app.route('/new-album', methods=['POST'])
 def process_add_album():
-    print(request.form)
+    artist = request.form['artist']
+    album = request.form['album']
+    
+    
+    
     
 # "magic code" -- boilerplate
 if __name__ == '__main__':
