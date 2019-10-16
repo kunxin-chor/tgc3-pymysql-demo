@@ -136,7 +136,7 @@ def show_edit_album_form(album_id):
     
     album = cursor.fetchone()
     
-    return album
+    return render_template('edit_album_form.template.html', album=album)
     
 # "magic code" -- boilerplate
 if __name__ == '__main__':
