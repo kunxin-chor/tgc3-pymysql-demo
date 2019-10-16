@@ -86,8 +86,10 @@ def process_search():
     #     print(each_result)
     return render_template("search_results.template.html", results=cursor)
     
+@app.route('/new-album')
+def show_new_album_form():
+    return "show new album form"
     
-
 # "magic code" -- boilerplate
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
