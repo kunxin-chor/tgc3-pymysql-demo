@@ -69,10 +69,24 @@ def search():
 def process_search():
     # try to retrieve out what the person has entered into the field
     terms = request.form["search-terms"]
-
+    
+    # create connection
+    connection = pymysql.connect(
+        host='localhost',
+        user='admin',
+        password='password',
+        database='chinook'
+        )
+        
+    cursor = connection.cursor(pymysql.cursors.DictCursor)
     
     sql = "SELECT * FROM Album WHERE Title LIKE '{}'".format(terms)
-    return sql
+    cursor.execute(sql)
+    
+    for each_result in cursor:
+        print(each_result)
+    return "done"
+    
     
 
 # "magic code" -- boilerplate
