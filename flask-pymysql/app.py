@@ -88,10 +88,13 @@ def process_search():
     
 @app.route('/new-album')
 def show_new_album_form():
-
+    connection = get_connection()
+    cursor = connection.cursor(pymysql.cursors.DictCursor)
     
-    artists = ["Aerosmith", "AC/DC 2", "Sally Ye"]
-    return render_template("add_new_album.template.html", artists=artists)
+    sql = "SELECT * FROM Artist"
+    cursor.execute(sql)
+    
+    return render_template("add_new_album.template.html", artists=cursor)
     
 # "magic code" -- boilerplate
 if __name__ == '__main__':
