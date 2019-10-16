@@ -80,7 +80,13 @@ def process_search():
         
     cursor = connection.cursor(pymysql.cursors.DictCursor)
     
-    sql = "SELECT * FROM Album WHERE Title LIKE '%{}%'".format(terms)
+    sql = """
+        SELECT * FROM Album 
+        INNER JOIN Artist ON Album.ArtistId = Artist.ArtistId
+        WHERE Title LIKE '%{}%' OR Artist.Name LIKE '%{}%'
+        
+    """.format(terms, terms)
+    print(sql)
     cursor.execute(sql)
     
     # MAKE SURE TO COMMENT OUT THE TEST CODE

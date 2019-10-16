@@ -18,12 +18,18 @@
                 <th>
                     Album Name
                 </th>
+                <th>
+                    Artist
+                </th>
             </tr>
             
             {% for each_result in results %}
             <tr>
                 <td>
                     {{each_result['Title']}}
+                </td>
+                <td>
+                    {{each_result['Name']}}
                 </td>
             </tr>
             {%endfor%}
