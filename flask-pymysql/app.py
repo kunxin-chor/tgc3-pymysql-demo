@@ -86,7 +86,7 @@ def process_search():
     # MAKE SURE TO COMMENT OUT THE TEST CODE
     # for each_result in cursor:
     #     print(each_result)
-    return render_template("search_results.template.html")
+    return render_template("search_results.template.html", results=cursor)
     
     
 
