@@ -119,6 +119,9 @@ def process_add_album():
     
     cursor.execute(sql)
     
+    # have to commit to save all changes!
+    connection.commit()
+    
     return "done"
     
     
