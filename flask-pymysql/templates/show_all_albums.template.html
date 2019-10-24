@@ -21,18 +21,22 @@
                 <th>
                     Artist
                 </th>
+                <th>
+                    &nbsp;
+                </th>
             </tr>
             
             {% for each_result in results %}
             <tr>
                 <td>
                     
-                    <a href="{{ url_for('show_album_details', album_id=each_result['AlbumId']) }}">
                     {{each_result['Title']}}
-                    </a>
                 </td>
                 <td>
                     {{each_result['Name']}}
+                </td>
+                <td>
+                    <a href="/edit-album/{{ each_result['AlbumId'] }}">Edit</a>
                 </td>
             </tr>
             {%endfor%}

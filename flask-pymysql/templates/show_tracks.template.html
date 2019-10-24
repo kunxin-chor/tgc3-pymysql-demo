@@ -12,14 +12,23 @@
   </head>
   <body>
     <div class='container'>
-        <h1>Album Search Results:</h1>
+        <h1>Track List</h1>
         <table class='table'>
             <tr>
                 <th>
-                    Album Name
+                    Track Name
                 </th>
                 <th>
-                    Artist
+                    Composer
+                </th>
+                <th>
+                    Unit Price
+                </th>
+                <th>
+                    Genre
+                </th>
+                <th>
+                    &nbsp;
                 </th>
             </tr>
             
@@ -27,12 +36,19 @@
             <tr>
                 <td>
                     
-                    <a href="{{ url_for('show_album_details', album_id=each_result['AlbumId']) }}">
-                    {{each_result['Title']}}
-                    </a>
+                    {{each_result['TrackName']}}
                 </td>
                 <td>
-                    {{each_result['Name']}}
+                    {{each_result['Composer']}}
+                </td>
+                <td>
+                    {{each_result['UnitPrice']}}
+                </td>
+                <td>
+                    {{each_result['GenreName']}}
+                </td>
+                <td>
+                    &nbsp;
                 </td>
             </tr>
             {%endfor%}

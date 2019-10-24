@@ -24,7 +24,7 @@ def home():
     cursor.execute(sql)
     return render_template("index.template.html", results=cursor)
 
-@app.route("/albums")
+@app.route("/albums-old")
 def albums():
     connection = get_connection()
         
@@ -144,7 +144,48 @@ def show_edit_album_form(album_id):
     
     return render_template('edit_album_form.template.html', album=album, artistCursor=artistCursor)
 
+@app.route('/edit-album/<album_id>', methods=['POST'])
+def process_edit_album(album_id):
+    artist = request.form['artist']
+    album = request.form['album']
+    
+    connection = get_connection()
+    cursor = connection.cursor()
+    
+    sql = """
+    UPDATE Album SET Title = "{}", ArtistId = {}
+    WHERE AlbumId = {}
+    """.format(album, artist, album_id)
+    
+    cursor.execute(sql)
+    connection.commit()
+    connection.close()
+    return "done"
 
+
+@app.route('/albums')    
+def show_albums():
+    connection = get_connection()
+    cursor = connection.cursor(pymysql.cursors.DictCursor)
+    
+    sql = "SELECT * FROM Album INNER JOIN Artist ON Album.ArtistId = Artist.ArtistId"
+    cursor.execute(sql)
+    
+    return render_template("show_all_albums.template.html", results=cursor)
+    
+@app.route('/album/<album_id>/tracks')
+def show_album_details(album_id):
+    connection = get_connection()
+    cursor = connection.cursor(pymysql.cursors.DictCursor)
+    
+    sql = """
+        SELECT Track.Name as TrackName, Composer, UnitPrice, Genre.Name as GenreName FROM Track 
+        INNER JOIN Genre On Track.GenreId = Genre.GenreId
+        WHERE AlbumId={}
+    """.format(album_id)
+    cursor.execute(sql)
+    
+    return render_template("show_tracks.template.html", results=cursor)
     
 # "magic code" -- boilerplate
 if __name__ == '__main__':
